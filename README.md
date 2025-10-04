@@ -1,4 +1,3 @@
-# DC-Position-Control-System
 ## Aim:
 To control the position of motor having the following specifications using MATLAB.<br>
 (J)     moment of inertia of the rotor =    3.2284E-6 kg.m^2<br>
@@ -55,8 +54,29 @@ The equation (1) can be written as <br>
 5.	Analyse the output in open loop and closed loop.
 
 ## Program
+```
+j = 3.2284E-6 
+b = 3.5077E-6 
+Ktf = 0.0274 
+R = 4 
+L= 2.75E-6
+
+s=tf('s')
+
+o_sys=Ktf/((j*s*s+b*s)*(R+L*s))
+subplot(2,1,1)
+step(o_sys)
+title('open loop response')
+
+cl_sys=feedback(o_sys,1)
+subplot(2,1,2)
+step(cl_sys)
+title('Closed loop resistance')
+```
 
 ## Output
+<img width="694" height="627" alt="image" src="https://github.com/user-attachments/assets/91d79117-f315-4bee-9b64-e95b039b340d" />
+
 
 ## Result
 Thus, the position of dc motor is controlled using MATLAB. 
